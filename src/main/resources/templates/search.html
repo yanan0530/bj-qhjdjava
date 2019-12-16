@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>搜索结果</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{http://www.bj-qhjd.com/css/style.css}" href="http://www.bj-qhjd.com/css/style.css">
+    <script type="text/javascript" src="http://www.bj-qhjd.com/js/jquery-3.1.1.js" th:src="@{http://www.bj-qhjd.com/js/jquery-3.1.1.js}"></script>
+    <script type="text/javascript" src="http://www.bj-qhjd.com/js/main.js" th:src="@{http://www.bj-qhjd.com/js/main.js}"></script>
+    <style>
+        .table img{
+            width: 20px !important;
+            height: 20px!important;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="top::header"></div>
+<div th:replace="top::nav"></div>
+<!--<div class="hyzx_sy">-->
+<!--    <div class="sy">-->
+<!--        <p>您现在的位置：</p>-->
+<!--        <a href="http://www.bj-qhjd.com/">首页</a>&nbsp;&gt;&nbsp;<span>鉴定结果</span>-->
+<!--    </div>-->
+<!--</div>-->
+<div class="jdjg">
+    <div class="jdyz">
+        <img src="http://www.bj-qhjd.com/images/yjdyz.png">
+    </div>
+    <div class="dbt">
+        <h3 style="margin-top: 0px; line-height: inherit">鉴定结果</h3>
+    </div>
+    <div class="jdjg_bt">
+        经北京泉衡钱币艺术品鉴定中心鉴定结果
+    </div>
+    <div class="pdxxbt">
+        根据您提供的藏品编号，查询到的鉴定信息如下：
+    </div>
+    <ul class="pdxx">
+        <li><span>藏品名称：</span><span th:text="${list} == null ? '' : ${list.spec}"></span></li>
+        <li><span>面值：</span><span th:text="${list} == null ? '' : ${list.goodsName}"></span></li>
+        <li><span>年份：</span><span th:text="${list} == null ? '' : ${list.year}"></span></li>
+        <li><span>鉴定编号:</span><span th:text="${list} == null ? '' : ${list.num}"></span></li>
+        <li><span>鉴定评价:</span><span th:text="${list} == null ? '' : ${list.talk}"></span></li>
+    </ul>
+    <div class="cpzs_bt">
+        藏品展示
+    </div>
+    <div class="cpzs" th:utext="${list} == null ? '' : ${list.img}"></div>
+</div>
+<div th:replace="footer::bottom1"></div>
+<div th:replace="footer::ssgjz"></div>
+</body>
+</html>

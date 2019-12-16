@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name="viewport" content=" height = device-height,
+				width = device-width,
+				initial-scale = 1.0,
+				minimum-scale = 1.0,
+				user-scalable = yes" />
+    <link rel="stylesheet" href="http://www.bj-qhjd.com/phone/css/style.css" th:href="@{http://www.bj-qhjd.com/phone/css/style.css}">
+    <link rel="stylesheet" type="text/css" href="/phone/css/size.css" th:href="@{/phone/css/size.css}" />
+    <script src="/phone/js/jquery-1.11.1.min.js" th:src="@{/phone/js/jquery-1.11.1.min.js}" ></script>
+    <script src="/phone/js/js.js" th:src="@{/phone/js/js.js}"></script>
+    <script type="text/javascript" src="/js/commons.js" th:src="@{/js/commons.js}" ></script>
+    <script type="text/javascript" src="/js/ajax.exception.filter.js" th:src="@{/js/ajax.exception.filter.js}" ></script>
+    <title>个人信息</title>
+</head>
+<body  class="hbj">
+<div id="m_div">
+    <div th:replace="top::mtop"></div>
+    <div class="sj-hy-sy sj-hy-sy1">
+        <div class="sj-hy-sy-l">
+            <img src="/phone/images/hy-bt-tb.jpg" th:src="@{/phone/images/hy-bt-tb.jpg}">个人信息
+        </div>
+        <div class="sj-hy-sy-r">
+            <a href="javascript:;" onclick="history.go(-1)"><img src="/phone/images/jt-fh.png" th:src="@{/phone/images/jt-fh.png}"></a>
+        </div>
+    </div>
+    <form action="/m/update"  method="post" id="userupdatam">
+
+    <div class="sj-grxx" th:with="vo=${session.userVo}">
+        <div class="xbt">
+            <h3>基本信息</h3>
+        </div>
+        <input class="inputxt"  type="hidden" value="" readonly name="userId" th:value="${vo.userId}" />
+        <div class="xhx">
+            <div class="mai">
+                <label>用户名：</label>
+                <input id="txtusername"  th:value="${vo.userName}" type="text" name="userRealName" />
+            </div>
+        </div>
+
+        <div class="xhx xhx1">
+            <div class="mai">
+                <label>性别：</label>
+                <label class="label1">
+                    <input type="radio" value="男" name="sex" checked="checked" />男</label>
+                <label class="label1">
+                    <input type="radio" value="女" name="sex"  />女</label>
+            </div>
+        </div>
+        <div class="xbt">
+            <h3>身份证信息</h3>
+        </div>
+        <div class="xhx">
+            <div class="mai">
+                <label>真实姓名：</label>
+                <input id="txtrealname" type="text" th:value="${vo.userRealName}" name="userRealName" />
+            </div>
+        </div>
+        <div class="xhx">
+            <div class="mai">
+                <label>身份证号：</label>
+                <input id="txtsafeanswer" type="text" th:value="${vo.file3}" name="file3" />
+            </div>
+        </div>
+        <div class="xhx">
+            <div class="mai">
+                <label>现居住地址：</label>
+                <input id="txtadress" type="text" th:value="${vo.file4}" name="file4" />
+            </div>
+        </div>
+        <div class="xbt">
+            <h3>联系方式</h3>
+        </div>
+        <div class="xhx">
+            <div class="mai">
+                <label>移动电话：</label>
+                <input id="txtmobile" type="text" th:value="${vo.userName}" name="userName" />
+            </div>
+        </div>
+        <div class="xhx">
+            <div class="mai">
+                <label>电子邮箱：</label>
+                <input  type="text" th:value="${vo.userEmail}" name="userEmail" />
+            </div>
+        </div>
+        <input class="subput" type="button" id="btnok" value="保 存" onclick="softSumitm('userupdatam', '');"  />
+    </div>
+    </form>
+    <div class="zanwei">&nbsp;</div>
+    <div th:replace="footer::mbnav"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--<meta charset="UTF-8">-->
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<!--<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>-->
+<!--<script type="text/javascript" src="js/commons.js"></script>-->
+<!--<script type="text/javascript" src="js/ajax.exception.filter.js"></script>-->
+<!--<title>Insert title here</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--	用户名 <input type="text" id="username"/> -->
+<!--	密码 <input type="text" id="password"/>-->
+<!--	<button class="btn" onclick="login();">登录</button>-->
+<!--	<button class="btn" onclick="showRegiste();">注册</button>-->
+<!--	<button class="btn" onclick="modify();">修改密码</button>-->
+<!--	<div id="hh" hidden style="border: 1px solid red">-->
+<!--		<form action="/C/save" method="post" id="userRegiste">-->
+<!--			用户名 <input type="text" name="userName" onchange="checkUserName(this);"/><span id="messa"></span> </br>-->
+<!--			密码 <input type="text"  name="password"/> </br>-->
+<!--			确认密码 <input type="text"  /> </br>-->
+<!--			手机号 <input type="text"  name="userPhone"/> </br>-->
+<!--			邮箱<input type="text"  name="userEmail"/> </br>-->
+<!--			性别 <input type="text"  name="userSex"/> </br>-->
+<!--			真实名称 <input type="text"  name="userRealName"/> </br>-->
+<!--		</form>-->
+<!--		<button class="btn btn-sm btn-primary" >关闭</button>-->
+<!--		<button class="btn btn-sm btn-primary" onclick="softSumit('userRegiste', '', );">提交</button>-->
+<!--	</div>-->
+<!--	<div id="xx" hidden>-->
+<!--		旧密码 <input type="text"  name="password" id="op"/> </br>-->
+<!--		新密码 <input type="text"  name="password" id="np"/> </br>-->
+<!--		确认密码 <input type="text"  name=""/> </br>-->
+<!--		<button class="btn" onclick="modifyPsd();">提交</button>-->
+<!--	</div>-->
+<!--	-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>会员登录</title>
+	<link rel="stylesheet" type="text/css" href="http://www.bj-qhjd.com/css/style.css" />
+	<script type="text/javascript" src="../../static/js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="http://www.bj-qhjd.com/js/main.js"></script>
+	<script type="text/javascript">
+		var showRegiste = function(){
+			$('#hh').show();
+		}
+		var checkUserName = function(o){
+			var value = $(o).val();
+			$.get('/C/checkUserName', {'userName' : value}, function(r){
+				if(r){
+					$("#messa").text("YES")
+					return;
+				}
+				$("#messa").text("No")
+			});
+		}
+
+		var login = function(){
+			var p = $("#password").val();
+			var u = $("#username").val();
+			$.get('/C/login', {'password' : p, 'userName' : u}, function(result){
+				alert(1)
+			});
+		}
+		var modify = function(){
+			$('#xx').show();
+		}
+		var modifyPsd = function(){
+			var op = $("#op").val();
+			var np = $("#np").val();
+			$.get('/C/modify', {'password' : np, 'old' : op}, function(result){
+				console.info(result);
+			});
+		}
+
+	</script>
+
+</head>
+
+<body>
+<div th:replace="top::header"></div>
+<div th:replace="top::nav"></div>
+<div class="nav">
+	<ul>
+		<li><a href="http://www.bj-qhjd.com/" class="ss">首 页</a></li>
+		<li><a href='http://www.bj-qhjd.com/guanyugongsi/gongsijianjie/'  rel='dropmenu1'><span>关于公司</span></a></li>
+		<li><a href='http://www.bj-qhjd.com/cangpinzhanshi/zhibi/'  rel='dropmenu6'><span>藏品展示</span></a></li>
+		<li><a href='http://www.bj-qhjd.com/zhuanjiatuandui/' ><span>专家团队</span></a></li>
+		<li><a href='http://www.bj-qhjd.com/xiaoxigonggao/xiaoxigonggao/'  rel='dropmenu13'><span>消息公告</span></a></li>
+		<li><a href='http://www.bj-qhjd.com/songpingxuzhi/pingjiyoushi/'  rel='dropmenu19'><span>送评须知</span></a></li>
+		<li><a href='http://www.bj-qhjd.com/hezuohuoban/dailishangyaoqiu/'  rel='dropmenu24'><span>合作伙伴</span></a></li>
+		<li><a href='http://www.bj-qhjd.com/lianxiwomen/lianxiwomen/'  rel='dropmenu27'><span>联系我们</span></a></li>
+	</ul>
+</div>
+
+<div class="hydl">
+	<div class="hydl_m">
+		<div class="hydl_mm">
+			<div class="hydl_mm_bt">
+				<h3>会员登录</h3>
+				<p>还不是会员，快来免费注册吧</p>
+			</div>
+			<form  id="loginform" >
+				<ul class="dlbd">
+					<li>
+						<label>
+							<img src="/images/dly_yhm_xt.jpg" /></label><input type="text" id="username" name="username" placeholder="手机号" />
+						</label>
+					</li>
+					<li>
+						<label>
+							<img src="/images/dly_mm_xt.jpg" /></label><input type="password" id="password" name="password" placeholder="请输入密码" /></label>
+					</li>
+					<input id="ret_runurl" type="hidden" />
+					<div class="action">
+						<input type="button" id="btnSubmit" name="" value="登  录" onclick="login();">
+					</div>
+				</ul>
+			</form>
+			<div class="div2">
+				<p>如果您还不是会员，请点击注册</p>
+				<a href="/C/toRegistered">注 册</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="bottom1">
+	<div class="bottom1-m">
+		<div class="bottom1-l">
+			<ul>     <li><a href="http://www.bj-qhjd.com/" class="ss">首 页</a></li>
+				<li><a href='http://www.bj-qhjd.com/guanyugongsi/gongsijianjie/'  rel='dropmenu1'>关于公司</a></li>
+				<li><a href='http://www.bj-qhjd.com/cangpinzhanshi/zhibi/'  rel='dropmenu6'>藏品展示</a></li>
+				<li><a href='http://www.bj-qhjd.com/zhuanjiatuandui/' >专家团队</a></li>
+				<li><a href='http://www.bj-qhjd.com/xiaoxigonggao/xiaoxigonggao/'  rel='dropmenu13'>消息公告</a></li>
+				<li><a href='http://www.bj-qhjd.com/songpingxuzhi/pingjiyoushi/'  rel='dropmenu19'>送评须知</a></li>
+				<li><a href='http://www.bj-qhjd.com/hezuohuoban/dailishangyaoqiu/'  rel='dropmenu24'>合作伙伴</a></li>
+				<li><a href='http://www.bj-qhjd.com/lianxiwomen/lianxiwomen/'  rel='dropmenu27'>联系我们</a></li>
+			</ul>
+			<div class="bot-b">
+				版权所有：北京泉衡艺术品鉴定中心   Copyright 2019- 2024 . All Rights Reserved
+			</div>
+		</div>
+		<dl class="ewm">
+			<dt><img src=""/></dt>
+			<dd>扫描二维码关注公众号</dd>
+		</dl>
+	</div>
+</div>
+<div class="ssgjz">
+	<p> 搜索关键词：</p> <a href="#">国鉴鉴定</a> <a href="#">国鉴评级</a>  <a href="#">鉴定评级公司</a> <a href="#">钱币鉴定</a> <a href="#">钱币评级</a>  <a href="#">机制币鉴定</a> <a href="#">古钱币鉴定</a> <a href="#">邮票鉴定</a>  <a href="#">邮票评级</a>
+</div>
+</body>
+</html>
+

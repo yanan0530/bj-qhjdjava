@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport"
+          content=" height = device-height,
+				width = device-width,
+				initial-scale = 1.0,
+				minimum-scale = 1.0,
+				user-scalable = yes" />
+    <title>鉴定查询</title>
+    <link rel="stylesheet" href="http://www.bj-qhjd.com/phone/css/style.css" th:href="@{http://www.bj-qhjd.com/phone/css/style.css}">
+    <link rel="stylesheet" type="text/css" href="/phone/css/size.css" th:href="@{/phone/css/size.css}" />
+    <script src="/phone/js/jquery-1.11.1.min.js" th:src="@{/phone/js/jquery-1.11.1.min.js}" ></script>
+    <script>
+        function searchM(){
+            var number=$("#txtnum").val();
+            window.location.href="http://admin.bj-qhjd.com/searchm?number="+number;
+        }
+    </script>
+</head>
+
+<body>
+<div id="m_div">
+    <div class="top">
+        <a class="a1" href="http://www.bj-qhjd.com/m/"><img src="http://www.bj-qhjd.com/images/logo.jpg" /></a><a class="a2" href="/"><img src="http://www.bj-qhjd.com/images/tel.jpg" /></a>
+    </div>
+    <div class="cxdbt">鉴定查询</div>
+    <div class="sj-jdcx">
+        <div class="bt">如下图红圈所示，输入同位置8-9位数字</div>
+        <div class="tp">
+            <img src="http://www.bj-qhjd.com/images/txm.jpg" />
+        </div>
+        <div class="sj-jdcx-m">
+            <input class="input1" id="txtnum"  type="text" placeholder="{格式：123456789}" />
+        </div>
+        <input class="input3" type="button" id="btnsearch" value="点击查询" onclick="searchM()" />
+    </div>
+    <div class="zanwei">&nbsp;</div>
+    <div th:replace="footer::mbnav"></div>
+</div>
+</body>
+</html>

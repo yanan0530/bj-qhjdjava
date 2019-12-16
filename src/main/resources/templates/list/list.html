@@ -1,0 +1,24 @@
+<table class="table">
+	<thead>
+		<th>名字</th>
+		<th>面值</th>
+		<th>年份</th>
+		<th>规格</th>
+		<th>评级编号</th>
+		<th>鉴定评价</th>
+		<th>图片</th>
+		<th>url</th>
+	</thead>
+	<tbody>
+		<tr th:each="vo : ${list}">
+			<td th:text="${vo} == null ? '' : ${vo.spec}"></td>
+			<td th:text="${vo} == null ? '' : ${vo.goodsName}"></td>
+			<td th:text="${vo} == null ? '' : ${vo.year}"></td>
+			<td th:text="${vo} == null ? '' : ${vo.size}"></td>
+			<td th:text="${vo} == null ? '' : ${vo.talk}"></td>
+			<td th:text="${vo} == null ? '' : ${vo.num}"></td>
+			<td th:utext="${vo} == null ? '' : ${vo.img}"></td>
+			<td th:text="${vo} == null ? '' : ${vo.printUrl}"></td>
+		</tr>
+	</tbody>
+</table>

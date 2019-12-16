@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name="viewport" content=" height = device-height,
+				width = device-width,
+				initial-scale = 1.0,
+				minimum-scale = 1.0,
+				user-scalable = yes" />
+	<link rel="stylesheet" type="text/css" href="/phone/css/style.css" th:href="@{/phone/css/style.css}" />
+	<link rel="stylesheet" href="http://www.bj-qhjd.com/phone/css/style.css" th:href="@{http://www.bj-qhjd.com/phone/css/style.css}">
+	<script src="/phone/js/jquery-1.11.1.min.js" th:src="@{/phone/js/jquery-1.11.1.min.js}" ></script>
+	<script src="/phone/js/js.js" th:src="@{/phone/js/js.js}"></script>
+	<title>登录</title>
+	<script src="/phone/js/app_mian.js"></script>
+	<script>
+		var login = function(){
+			var p = $("#password").val();
+			var u = $("#username").val();
+			$.get('/m/logins', {'password' : p, 'userName' : u}, function(result){
+				window.location.href="/m/toUserInfo";
+			});
+		}
+	</script>
+</head>
+<body  class="hbj">
+<div id="m_div">
+	<div class="mm-top">
+		<div class="mm-top-l">
+			<a href="javascript:;" onclick="history.go(-1)">
+				<img  th:src="@{/phone/images/top-l.jpg}"></a>
+		</div>
+		<div class="mm-top-r">
+			<a href="javascript:;">
+				<img src="http://www.bj-qhjd.com/images/logo1.jpg" th:src="@{http://www.bj-qhjd.com/images/logo1.jpg}" width="100%" /></a>
+		</div>
+	</div>
+	<div class="hydl-bt">
+		<ul>
+			<li class="hover"><a href="javascript:;">会员登录</a></li>
+			<li><a href="/m/toRegistered">手机快速注册</a></li>
+		</ul>
+	</div>
+	<div class="login_reg">
+		<ul>
+			<div class="div1">
+				<li>
+					<label>帐号</label>
+					<input name="" id="username" type="text" class="input_text_user" placeholder="请输入手机号" required>
+				</li>
+			</div>
+			<div class="div1">
+				<li>
+					<label>密码</label>
+					<input name="" id="password" type="password" class="input_text_password mima_dd" placeholder="请输入密码">
+					<a class="eyes_box" data-show="1" href="javascript:void(0);"><img src="/images/yan-hui.png" th:src="@{/phone/images/yan-hui.png}"></a>
+				</li>
+			</div>
+		</ul>
+		<input class="subput" id="btnok" type="button" value="登 录" onclick="login()">
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>会员注册</title>
+    <link rel="stylesheet" th:href="@{http://www.bj-qhjd.com/css/style.css}"
+          href="http://www.bj-qhjd.com/css/style.css">
+    <script type="text/javascript" src="http://www.bj-qhjd.com/js/jquery-3.1.1.js"
+            th:src="@{http://www.bj-qhjd.com/js/jquery-3.1.1.js}"></script>
+    <script type="text/javascript" src="/js/commons.js" th:src="@{/js/commons.js}"></script>
+    <script type="text/javascript" src="/js/ajax.exception.filter.js" th:src="@{/js/ajax.exception.filter.js}"></script>
+    <script type="text/javascript" src="http://www.bj-qhjd.com/js/main.js"
+            th:src="@{http://www.bj-qhjd.com/js/main.js}"></script>
+
+    <script type="text/javascript">
+        var checkUserName = function (o) {
+            var value = $(o).val();
+            $.get('/C/checkUserName', {'userName': value}, function (r) {
+                if (r) {
+                    $("#messa").text("可以使用")
+                    return;
+                }
+                $("#messa").text("已存在")
+            });
+        }
+
+    </script>
+</head>
+
+<body>
+<div th:replace="top::header"></div>
+<div th:replace="top::nav"></div>
+<div class="zhmm_banner">
+    <div class="zhmm_t_xwz">
+        <h3 class="hh3">公平•公正 • 泉衡鉴定</h3>
+        <p class="p1">Fairness and Justice Quan Heng Appraisal</p>
+    </div>
+</div>
+<div class="hyzc_main">
+    <div class="dbt">
+        <div class="dbt_l">会员注册</div>
+        <div class="dbt_r">
+            <p>您已有帐号请直接</p>
+            <a href="/C/toUser">登 录</a>
+        </div>
+    </div>
+    <form action="/C/save" method="post" id="userRegiste">
+        <div class="hyzc_main_m">
+            <ul>
+                <li>
+                    <label>真实名称：</label>
+                    <input type="text" class="inputxt" name="userRealName"/>
+                </li>
+                <li>
+                    <label>手机号：</label>
+                    <input class="inputxt" id="txtUserPhone" name="userName" type="text" onchange="checkUserName(this);" />
+                    <span id="messa" class="Validform_checktip">* 请输入正确的手机号，以便联系</span>
+                </li>
+                <li>
+                    <label>密码：</label>
+                    <input type="text" id="password" class="inputxt" name="password"/>
+                    <div class="Validform_checktip">* 密码不得少于6位数</div>
+                </li>
+                <div class="action">
+                    <input type="button" value="注 册" name="" onclick="softSumit('userRegiste', '');"/>
+                </div>
+            </ul>
+        </div>
+    </form>
+</div>
+<div th:replace="footer::bottom1"></div>
+<div th:replace="footer::ssgjz"></div>
+</body>
+</html>

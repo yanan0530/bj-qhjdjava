@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name="viewport" content=" height = device-height,
+				width = device-width,
+				initial-scale = 1.0,
+				minimum-scale = 1.0,
+				user-scalable = yes" />
+    <link rel="stylesheet" href="http://www.bj-qhjd.com/phone/css/style.css" th:href="@{http://www.bj-qhjd.com/phone/css/style.css}">
+    <link rel="stylesheet" type="text/css" href="/phone/css/size.css" th:href="@{/phone/css/size.css}" />
+    <script src="/phone/js/jquery-1.11.1.min.js" th:src="@{/phone/js/jquery-1.11.1.min.js}" ></script>
+    <script src="/phone/js/js.js" th:src="@{/phone/js/js.js}"></script>
+    <title>用户中心</title>
+</head>
+<body  class="hbj">
+<div id="m_div">
+    <div th:replace="top::mtop"></div>
+    <div class="sj-hy-sy">
+        <div class="sj-hy-sy-l">
+            <img th:src="@{http://www.bj-qhjd.com/images/hy-bt-tb.jpg}">个人信息
+        </div>
+        <div class="sj-hy-sy-r">
+            <a href="/m/toUserDetails">
+                <img src="http://www.bj-qhjd.com/phone/images/jt-xy.png"></a>
+        </div>
+    </div>
+    <div class="sj-hy-sy">
+        <div class="sj-hy-sy-l">
+            <img src="http://www.bj-qhjd.com/phone/images/smdd1.png">修改密码
+        </div>
+        <div class="sj-hy-sy-r">
+            <a href="/m/toUserPassword">
+                <img src="http://www.bj-qhjd.com/phone/images/jt-xy.png"></a>
+        </div>
+    </div>
+    <div class="sj-hy-sy">
+        <div class="sj-hy-sy-l">
+            <img src="http://www.bj-qhjd.com/phone/images/smdd3.png">退出
+        </div>
+        <div class="sj-hy-sy-r">
+            <a href="/m/signout"><img src="http://www.bj-qhjd.com/phone/images/jt-xy.png"></a>
+        </div>
+    </div>
+    <div class="zanwei">&nbsp;</div>
+    <div th:replace="footer::mbnav"></div>
+</div>
+</body>
+</html>

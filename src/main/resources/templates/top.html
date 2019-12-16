@@ -1,0 +1,40 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+    <div class="header" th:fragment="header">
+        <div class="head">
+            <div class="logo">
+                <a href="/">
+                    <img src="http://www.bj-qhjd.com/images/logo.png"></a>
+            </div>
+            <div class="head_r">
+                <div class="head_r_m">
+                    <a class="a3" href="javascript:void(0);" onclick="window.external.AddFavorite(document.location.href,document.title)" title="收藏本站到收藏夹">收藏</a>
+                    <a class="a2" href="/C/toRegistered">注册</a>
+                    <a class="a1" href="/C/toUser">登录</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nav" th:fragment="nav">
+        <ul>
+            <li><a href="http://www.bj-qhjd.com/" class="ss">首 页</a></li>
+            <li><a href='http://www.bj-qhjd.com/guanyugongsi/gongsijianjie/'  rel='dropmenu1'><span>关于公司</span></a></li>
+            <li><a href='http://www.bj-qhjd.com/cangpinzhanshi/zhibi/'  rel='dropmenu6'><span>藏品展示</span></a></li>
+            <li><a href='http://www.bj-qhjd.com/zhuanjiatuandui/' ><span>专家团队</span></a></li>
+            <li><a href='http://www.bj-qhjd.com/xiaoxigonggao/xiaoxigonggao/'  rel='dropmenu13'><span>消息公告</span></a></li>
+            <li><a href='http://www.bj-qhjd.com/songpingxuzhi/pingjiyoushi/'  rel='dropmenu19'><span>送评须知</span></a></li>
+            <li><a href='http://www.bj-qhjd.com/hezuohuoban/dailishangyaoqiu/'  rel='dropmenu24'><span>合作伙伴</span></a></li>
+            <li><a href='http://www.bj-qhjd.com/lianxiwomen/lianxiwomen/'  rel='dropmenu27'><span>联系我们</span></a></li>
+        </ul>
+    </div>
+    <div class="hy-top" th:fragment="mtop">
+        <img src="images/tx.jpg" th:src="@{http://www.bj-qhjd.com/images/tx.jpg}">
+        <div class="hy-top1">
+            <p>会员中心</p>
+            <p><a class="ys-wsan" href="javascript:;" th:text="${session.userName}" ></a></p>
+        </div>
+    </div>
+</body>
+</html>

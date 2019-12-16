@@ -1,0 +1,121 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--<meta charset="UTF-8">-->
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<!--<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>-->
+<!--<script type="text/javascript" src="js/commons.js"></script>-->
+<!--<script type="text/javascript" src="js/ajax.exception.filter.js"></script>-->
+<!--<title>Insert title here</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--	用户名 <input type="text" id="username"/> -->
+<!--	密码 <input type="text" id="password"/>-->
+<!--	<button class="btn" onclick="login();">登录</button>-->
+<!--	<button class="btn" onclick="showRegiste();">注册</button>-->
+<!--	<button class="btn" onclick="modify();">修改密码</button>-->
+<!--	<div id="hh" hidden style="border: 1px solid red">-->
+<!--		<form action="/C/save" method="post" id="userRegiste">-->
+<!--			用户名 <input type="text" name="userName" onchange="checkUserName(this);"/><span id="messa"></span> </br>-->
+<!--			密码 <input type="text"  name="password"/> </br>-->
+<!--			确认密码 <input type="text"  /> </br>-->
+<!--			手机号 <input type="text"  name="userPhone"/> </br>-->
+<!--			邮箱<input type="text"  name="userEmail"/> </br>-->
+<!--			性别 <input type="text"  name="userSex"/> </br>-->
+<!--			真实名称 <input type="text"  name="userRealName"/> </br>-->
+<!--		</form>-->
+<!--		<button class="btn btn-sm btn-primary" >关闭</button>-->
+<!--		<button class="btn btn-sm btn-primary" onclick="softSumit('userRegiste', '', );">提交</button>-->
+<!--	</div>-->
+<!--	<div id="xx" hidden>-->
+<!--		旧密码 <input type="text"  name="password" id="op"/> </br>-->
+<!--		新密码 <input type="text"  name="password" id="np"/> </br>-->
+<!--		确认密码 <input type="text"  name=""/> </br>-->
+<!--		<button class="btn" onclick="modifyPsd();">提交</button>-->
+<!--	</div>-->
+<!--	-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>会员登录</title>
+	<link rel="stylesheet" th:href="@{http://www.bj-qhjd.com/css/style.css}" href="http://www.bj-qhjd.com/css/style.css">
+	<script type="text/javascript" src="http://www.bj-qhjd.com/js/jquery-3.1.1.js" th:src="@{http://www.bj-qhjd.com/js/jquery-3.1.1.js}"></script>
+	<script type="text/javascript" src="http://www.bj-qhjd.com/js/main.js" th:src="@{http://www.bj-qhjd.com/js/main.js}"></script>
+	<script type="text/javascript">
+		var showRegiste = function(){
+			$('#hh').show();
+		}
+		var checkUserName = function(o){
+			var value = $(o).val();
+			$.get('/C/checkUserName', {'userName' : value}, function(r){
+				if(r){
+					$("#messa").text("YES")
+					return;
+				}
+				$("#messa").text("No")
+			});
+		}
+		var login = function(){
+			var p = $("#password").val();
+			var u = $("#username").val();
+			$.get('/C/login', {'password' : p, 'userName' : u}, function(result){
+				window.open("/C/toUserInfo")
+			});
+		}
+		var modify = function(){
+			$('#xx').show();
+		}
+		var modifyPsd = function(){
+			var op = $("#op").val();
+			var np = $("#np").val();
+			$.get('/C/modify', {'password' : np, 'old' : op}, function(result){
+				console.info(result);
+			});
+		}
+
+	</script>
+
+</head>
+
+<body>
+<div th:replace="top::header"></div>
+<div th:replace="top::nav"></div>
+<div class="hydl">
+	<div class="hydl_m">
+		<div class="hydl_mm">
+			<div class="hydl_mm_bt">
+				<h3>会员登录</h3>
+				<p>还不是会员，快来免费注册吧</p>
+			</div>
+			<form  id="loginform" >
+				<ul class="dlbd">
+					<li>
+						<label>
+							<img src="/images/dly_yhm_xt.jpg" /></label><input type="text" id="username" name="username" placeholder="手机号" />
+						</label>
+					</li>
+					<li>
+						<label>
+							<img src="/images/dly_mm_xt.jpg" /></label><input type="password" id="password" name="password" placeholder="请输入密码" /></label>
+					</li>
+					<input id="ret_runurl" type="hidden" />
+					<div class="action">
+						<input type="button" id="btnSubmit" name="" value="登  录" onclick="login();">
+					</div>
+				</ul>
+			</form>
+			<div class="div2">
+				<p>如果您还不是会员，请点击注册</p>
+				<a href="/C/toRegistered">注 册</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div th:replace="footer::bottom1"></div>
+<div th:replace="footer::ssgjz"></div>
+</body>
+</html>
+

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content=" height = device-height,
+				width = device-width,
+				initial-scale = 1.0,
+				minimum-scale = 1.0,
+				user-scalable = yes"/>
+    <link rel="stylesheet" href="http://www.bj-qhjd.com/phone/css/style.css" th:href="@{http://www.bj-qhjd.com/phone/css/style.css}">
+    <link rel="stylesheet" type="text/css" href="/phone/css/size.css" th:href="@{/phone/css/size.css}"/>
+    <script src="/phone/js/jquery-1.11.1.min.js" th:src="@{/phone/js/jquery-1.11.1.min.js}"></script>
+    <script src="/phone/js/js.js" th:src="@{/phone/js/js.js}"></script>
+    <script type="text/javascript" src="/js/commons.js" th:src="@{/js/commons.js}"></script>
+    <script type="text/javascript" src="/js/ajax.exception.filter.js" th:src="@{/js/ajax.exception.filter.js}"></script>
+    <title>注册</title>
+</head>
+<body class="hbj">
+
+
+<div id="m_div">
+
+    <div class="mm-top">
+        <div class="mm-top-l">
+            <a href="javascript:;" onclick="history.go(-1)">
+                <img src="/phone/images/top-l.jpg"></a>
+        </div>
+        <div class="mm-top-r">
+            <a href="javascript:;">
+                <img src="http://www.bj-qhjd.com/images/logo1.jpg" th:src="@{http://www.bj-qhjd.com/images/logo1.jpg}" width="100%" /></a>
+        </div>
+    </div>
+
+    <div class="hydl-bt">
+        <ul>
+            <li><a href="/m/login">会员登录</a></li>
+            <li class="hover"><a href="javascript:;">手机快速注册</a></li>
+        </ul>
+    </div>
+    <div class="sj-sjzc">
+        <form action="/C/save" method="post" id="userRegiste">
+            <ul>
+                <div class="div1">
+                    <li>
+                        <label class="label1">中国 +86</label>
+                        <input id="txtUserPhone" name="userName" type="text" class="text1" placeholder="请输入手机号"
+                               onchange="checkUserName(this);">
+                    </li>
+                </div>
+                <div class="div1">
+                    <li>
+                        <label>登录密码</label>
+                        <input id="password" name="password" type="password" placeholder="请输入密码" class="text1">
+                    </li>
+                </div>
+
+            </ul>
+            <script type="text/javascript">
+                $(function () {
+                    $("#btn").click(function () {
+                        var _mobile = $("#userphone").val();
+                        if (_mobile == "") {
+                            alert("请填写你的手机号")
+                            return;
+                        }
+                    })
+                })
+            </script>
+            <input class="subput" id="btnok" type="button" value="快速注册" onclick="softSumitm('userRegiste', '');">
+            <p id="messa" style="text-align: center;color: red;"></p>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    var checkUserName = function (o) {
+        var value = $(o).val();
+        $.get('/C/checkUserName', {'userName': value}, function (r) {
+            if (r) {
+                $("#messa").text("可以使用")
+                return;
+            }
+            $("#messa").text("已存在")
+        });
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>通用模板</title>
+    <link rel="stylesheet" th:href="@{http://www.bj-qhjd.com/css/style.css}" href="http://www.bj-qhjd.com/css/style.css">
+    <script type="text/javascript" src="http://www.bj-qhjd.com/js/jquery-3.1.1.js" th:src="@{http://www.bj-qhjd.com/js/jquery-3.1.1.js}"></script>
+    <script type="text/javascript" src="http://www.bj-qhjd.com/js/main.js" th:src="@{http://www.bj-qhjd.com/js/main.js}"></script>
+</head>
+
+<body>
+<div th:replace="top::header"></div>
+<div th:replace="top::nav"></div>
+<div class="hydl">
+    <div class="hydl_m">
+        <div class="hydl_mm">
+            <div class="hydl_mm_bt">
+                <h3>会员登录</h3>
+                <p>还不是会员，快来免费注册吧</p>
+            </div>
+            <form  id="loginform" >
+                <ul class="dlbd">
+                    <li>
+                        <label>
+                            <img src="/images/dly_yhm_xt.jpg" /></label><input type="text" id="username" name="username" placeholder="手机号" />
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <img src="/images/dly_mm_xt.jpg" /></label><input type="password" id="password" name="password" placeholder="请输入密码" /></label>
+                    </li>
+                    <input id="ret_runurl" type="hidden" />
+                    <div class="action">
+                        <input type="button" id="btnSubmit" name="" value="登  录" onclick="login();">
+                    </div>
+                </ul>
+            </form>
+            <div class="div1"><a href="findpwd.html">忘记密码 ?</a></div>
+            <div class="div2">
+                <p>如果您还不是会员，请点击注册</p>
+                <a href="registers.html">注 册</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="footer::bottom1"></div>
+<div th:replace="footer::ssgjz"></div>
+</body>
+</html>
+

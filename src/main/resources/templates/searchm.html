@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>手机端搜索</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/css/size.css}" href="/css/size.css">
+
+    <script type="text/javascript" src="http://www.bj-qhjd.com/js/jquery-3.1.1.js"
+            th:src="@{http://www.bj-qhjd.com/js/jquery-3.1.1.js}"></script>
+    <script>
+        $(function () {
+            $(".ys_main p").each(function () {
+                var _this = $(this);
+                var _content = _this.html().replace("&nbsp;", "").replace("<br>", "").trim();
+                if (_content.length == 0) {
+                    _this.remove();
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+<div id="m_div">
+    <div class="logo">
+        <img src="http://www.bj-qhjd.com/images/logo.jpg" width="100%">
+    </div>
+    <div class="jdjg_bt">经北京泉衡钱币艺术品鉴定中心鉴定结果</div>
+    <div class="pdxxbt">根据您提供的藏品编号，查询到的鉴定信息如下：</div>
+    <ul class="pdxx">
+        <li><span>藏品名称：</span><b  th:text="${list} == null ? '' : ${list.spec}"></b></li>
+        <li><span>面值：</span><b th:text="${list} == null ? '' : ${list.goodsName}"></b></li>
+        <li><span>成年份及工艺：</span><b th:text="${list} == null ? '' : ${list.year}"></b></li>
+        <li><span>鉴定编号:</span><b th:text="${list} == null ? '' : ${list.num}"></b></li>
+        <li><span>鉴定评价:</span><b th:text="${list} == null ? '' : ${list.talk}"></b></li>
+    </ul>
+    <div class="cpzs_bt">
+        藏品展示
+    </div>
+    <div class="ys_main">
+        <div class="cpzs" th:utext="${list} == null ? '' : ${list.img}"></div>
+    </div>
+    <div class="cpzs_bt" style="text-align: center; color: #cc010b;">
+        扫描“二维码”关注微信公众号
+    </div>
+    <div class="ewm">
+        <img src="http://www.bj-qhjd.com/images/wx.jpg">
+    </div>
+</div>
+</body>
+</html>

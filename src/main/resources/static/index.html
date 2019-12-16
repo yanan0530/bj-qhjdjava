@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+<title>test</title>
+<script type="text/javascript">
+	var printShow = function(){
+		var url = "/B/print";
+	    var wind = window.open(url,'打印', 'height=400, width=400, top=100, left=100, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
+	}
+	var printShow2 = function(){
+		window.open("/C/toUser");   
+	}
+	window.location.href="/C/toUser"
+</script>
+</head>
+<body>
+<div id="main"></div>
+<script type="text/javascript">
+	$("#main").load("/B/list");
+</script>
+<button onclick="printShow();" class="btn">打印</button>
+<button onclick="printShow2();" class="btn">会员中心</button>
+</body>
+</html>

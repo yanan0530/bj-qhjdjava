@@ -1,0 +1,63 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>分页测试</title>
+<style type="text/css">
+.page-auto-change {
+	page-break-before: auto;
+	page-break-after: always;
+}
+*{
+margin:0px;
+padding:0px;
+}
+.tab{
+height: 101px; padding-bottom: 5mm; padding-top: 3.5mm;border: 0mm;
+}
+</style>
+</head>
+<body  style="width:718px;height:1010px;">
+		<table  th:each="vo : ${imgs}" class="tab">
+			<tbody>
+				<tr>
+					<td bgcolor=""  valign="middle" width="263px" align="left"></td>
+					<td  valign="middle" width="282px" align="left"><span
+						style="font-weight: bold; font-size: 12px">
+						<table>
+							<tr><td style="font-weight: bold;font-size: 14px;height: 38px;" th:text="${vo} == null ? '' : ${vo.spec}"></td></tr>
+							<tr><td style="font-size: 10px" th:text="${vo} == null ? '' : ${vo.year}" ></td></tr>
+							<tr><td style="font-size: 1px;font-weight: 600;">冠字编号  : <span th:text="${vo} == null ? '' : ${vo.size}"></span></td></tr>
+						</table></span>
+					</td>
+					<td valign="middle" width="127px" align="left">
+						<table style="width: 100%;">
+							<tr><td th:text="${vo} == null ? '' : ${vo.talk}" style="text-align: center;font-size: 25px;"></td></tr>
+							<tr><td></td></tr>
+							<tr style="font-size: 5px !important;text-align: center;"><td style="font-size: 10px;font-weight: 600;" th:text="${vo} == null ? '' : ${vo.num}"></td></tr>
+						</table>
+					</td>
+					<td valign="middle" width="5px" align="left" th:if="${vo.isepq} == 1">
+						<table style="font-size: 12px;font-weight: 600;">
+							<tr><td>E</td></tr>
+							<tr><td>P</td></tr>
+							<tr><td>Q</td></tr>
+						</table>
+					</td>
+					<td valign="middle" width="5px" align="left" th:if="${vo.isepq} != 1">
+						<table style="font-size: 12px">
+							<tr><td> </td></tr>
+							<tr><td> </td></tr>
+							<tr><td> </td></tr>
+						</table>
+					</td>
+					<td  valign="middle" width="79px" align="left">
+						<img width="70px" height="70px" alt="" th:src="${vo} == null ? '' : ${vo.code}">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+</body>
+</html>
+<script>
+window.print(false);
+</script>

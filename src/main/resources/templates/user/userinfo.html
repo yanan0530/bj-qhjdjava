@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>会员注册</title>
+    <link rel="stylesheet" th:href="@{http://www.bj-qhjd.com/css/style.css}" href="http://www.bj-qhjd.com/css/style.css">
+    <script type="text/javascript" src="http://www.bj-qhjd.com/js/jquery-3.1.1.js" th:src="@{http://www.bj-qhjd.com/js/jquery-3.1.1.js}"></script>
+    <script type="text/javascript" src="http://www.bj-qhjd.com/js/main.js" th:src="@{http://www.bj-qhjd.com/js/main.js}"></script>
+    <script type="text/javascript" src="/js/commons.js" th:src="@{/js/commons.js}" ></script>
+    <script type="text/javascript" src="/js/ajax.exception.filter.js" th:src="@{/js/ajax.exception.filter.js}" ></script>
+</head>
+
+<body>
+<div th:replace="top::header"></div>
+<div th:replace="top::nav"></div>
+<div class="hyzx_sy">
+    <div class="sy">
+        <p>您现在的位置：</p>
+        <a href="http://www.bj-qhjd.com/">首页</a>&nbsp;&gt;&nbsp;<span>个人中心</span>
+    </div>
+</div>
+<div class="hyzx_m grxx_m">
+    <div class="hyzx_m_l">
+        <div class="hyzx_txxxk">
+            <div class="ftx">
+                <img th:src="@{/images/mrtx.png}" />
+            </div>
+            <p>个人中心</p>
+            <p th:text="${session.userName}"></p>
+            <p>您好,</p>
+        </div>
+        <ul>
+            <li><a  href="/C/toUserInfo" class="hover">个人信息</a></li>
+            <li><a  href="/C/toUserPassword">修改密码</a></li>
+        </ul>
+    </div>
+    <div class="hyzx_m_r">
+        <div class="dbt">
+            <h3>个人信息</h3>
+            <p>请完善个人资料</p>
+        </div>
+        <form action="/C/update"  method="post" id="userupdata">
+            <ul class="grxx" th:with="vo=${session.userVo}">
+                <input class="inputxt"  type="hidden" value="" readonly name="userId" th:value="${vo.userId}" />
+                <div class="sgbt">基本信息</div>
+                <li>
+                    <label>手机号：</label>
+                    <input class="inputxt" id="txtusername" type="text" value="" readonly name="userName1" th:value="${vo.userName}" />
+                </li>
+                <li>
+                    <label>真实姓名：</label>
+                    <input class="inputxt" id="txtrealname" type="text" th:value="${vo.userRealName}" name="userRealName" />
+                </li>
+                <li>
+                    <label>身份证号：</label>
+                    <input class="inputxt" id="txtsafeanswer" type="text" value="" name="file3" th:value="${vo.file3}" />
+                </li>
+<!--                <li>-->
+<!--                    <label>身份证上地址：</label>-->
+<!--                    <input class="inputxt" id="txtsafequestion" type="text" value="" name="" />-->
+<!--                </li>-->
+                <li>
+                    <label>现居住地址：</label>
+                    <input class="inputxt" id="txtadress" type="text" value="" name="file4" th:value="${vo.file4}" />
+                </li>
+<!--                <li>-->
+<!--                    <label>邮编：</label>-->
+<!--                    <input class="inputxt" id="txtwxname" type="text" value="" name="" />-->
+<!--                </li>-->
+                <div class="sgbt">联系方式</div>
+                <li>
+                    <label>电子邮箱：</label>
+                    <input class="inputxt" id="txtemail" type="text" value="" name="userEmail" th:value="${vo.userEmail}" />
+                </li>
+               <!-- <li>
+                    <label>移动电话：</label>
+                    <input class="inputxt" id="txtmobile" type="text" value="" name="" />
+                </li>
+                <li>
+                    <label>固定电话：</label>
+                    <input class="inputxt" id="txttelephone" type="text" value="" name="" />
+                </li>-->
+                <div class="action">
+                    <input type="button" name="" id="btnok" value="确 定" onclick="softSumit('userupdata', '');" />
+                </div>
+            </ul>
+        </form>
+    </div>
+</div>
+<div th:replace="footer::bottom1"></div>
+<div th:replace="footer::ssgjz"></div>
+</body>
+</html>
